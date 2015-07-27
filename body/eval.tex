@@ -17,7 +17,6 @@ Each question and definition sentence was annotated to according to the followin
 
 After the original annotations were completed, they were checked for quality by a second annotator.
 
-
 \subsection{Semantic Role Labeling}
 \begin{table*}[htdp]
 \begin{center}
@@ -64,26 +63,38 @@ Method & Accuracy\\
 \hline
 BOW & 63.12\\
 Manual SRL & 67.38\\
-BOW+Manual SRL & 70.92\\
+BOW+Manual SRL & {\bf 70.92}\\
 \hline
-Standard	& 55.32\\
+Standard	& {\bf 55.32}\\
 Per Process & 46.80 \\
-Domain Adaptation & 55.32\\
+Domain Adaptation & {\bf 55.32}\\
 Distant Supervision & 51.77\\
 \hline
-BOW + Standard  & 65.24\\
+BOW + Standard  & {\bf 65.24}\\
 \hline
 \end{tabular}
+\caption{Question Answering Performance. Bold face indicates the best performance in each block.}
+\label{tab:qa-results}
 \end{center}
+\vspace{-3ex}
 \end{table}
 
 \subsection{QA}
+Our central hypothesis is that using semantic-role based representation helps in process recognition questions. 
+We compare manually generated semantic roles (as a result of the annotation process), and the performance of automatically derived semantic roles for question answering. 
+We use the process described in Section~\ref{sec:qa} for answering questions. 
 
-Our central hypothesis is that using semantic-role based representation helps in process recognition questions. We compare manually generated semantic roles (as a result of the annotation process), and the performance of automatically derived semantic roles for question answering. We use the process described in Section~\ref{sec:qa} for answering questions. 
+Table~\ref{tab:qa-results} shows the accuracy of the various systems. 
+As a baseline, we use a simple bag-of-words system that uses textual entailment but without the semantic roles (BOW). 
+Manual SRL, is a system which uses manually assigned semantic roles as its representation. 
+We find that using manual roles by itself for alignment yields a 9\% relative improvement in accuracy. 
+BOW and SRL perform well in slightly different subsets of questions. 
+As a result combining SRL-based scoring with BOW based scoring yields more than 12\% improvement. 
+While access to semantic roles provides gains, a variety of other issues also need to be addressed to further improve QA performance (Section~\ref{sec:error-analysis}).
 
-Table~\ref{tab:qa-results} shows the accuracy of the various systems. We use a simple bag-of-words system that uses textual entailment but without the semantic roles  as a baseline (BOW). Manual SRL, is a system which uses manually assigned semantic roles as its representation. We find that using manual roles by itself for alignment yields a 9\% relative improvement in accuracy. BOW and SRL perform well in slightly different subsets of questions. As a result combining SRL-based scoring with BOW based scoring yields more than 12\% improvement. While access to semantic roles provides gains, a variety of other issues also need to be addressed to further improve QA performance (Section~\ref{sec:error-analysis}).
-
-Automatically obtained semantic roles using the Standard formulation is worse than BOW by itself. However, in conjunction with BOW provides minor gains over using BOW alone. The QA performance of the other automatic SRL variants track the SRL extraction accuracy. This suggests that improving the automatic SRL performance is likely to provide improvements in QA. 
-
+Automatically obtained semantic roles using the Standard formulation is worse than BOW by itself. 
+However, in conjunction with BOW, Standard SRL provides minor gains over using BOW alone. 
+For the most part, the QA performance of the other automatic SRL variants track the SRL extraction accuracy. 
+This suggests that improving the automatic SRL performance is likely to provide improvements in QA. 
 
 \input{body/error-analysis}
