@@ -1,18 +1,30 @@
 % !TEX root =  ../main.tex
 \subsection{Error Analysis}
 
-We can categorize the questions that the QA system fails to answer as follows:
+{\bf Automatic SRL Failures}
+
+A qualitative analysis of the SRL errors showed two main issues that arise out of data sparsity. Much of the errors arise from failures to identify the proper predicate. It turns out that the dominant pattern is where the predicate is a verb that is directly attached to the ROOT. Other syntactic patterns are infrequently observed and are not very reliable. Automatic SRL fails in these cases. Similarly the dependency labels of the children of a node are also strong features for predicate prediction but this feature again fails except in cases of the most dominant dependencies. 
+
+A closer investigation suggests much of the variation in these patterns arise because of functional phrases such as ``is a process by which''. Simplifying the sentences by eliminating these constructions can lead to improved performance.
+
+{\bf QA Failures}
+
+Even with manually assigned roles, the QA system failed on nearly 30\% of the questions. The following are the main error categories.
 \begin{itemize}
 \item {\em Knowledge Representation Issues} (37\%)
-\begin{itemize}
-\item {\em Sequential Knowledge} -- Questions that test the ability to recognize the event order in a process. Example:  {\em What is the third step of the water cycle?}
-\item {\em Underspecified} -- Questions containing minimal role information. Example:  {\em What process ends with a new and improved plant?}
-\item {\em Role Coverage} -- Questions where certain critical information are not covered in our semantic representation. Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
-\end{itemize}
+
+Some questions require the ability to recognize the order in which sub-events happen in a process e.g., {\em What is the third step of the water cycle?}.
+
+In some cases, the question only specifies one role such as the result e.g., {\em What process ends with a new and improved plant?}. Success in these cases depends on ability to do effective textual entailment. 
+
+In other cases, certain critical information are not covered in our semantic representation. Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
 \item {\em Entailment Issues} (32\%)
-\begin{itemize}
-\item Inconsistent entailment scores. Example: The text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
-\item Hard entailment problems. Example: The text-hypothesis pair {\em(`travels from the sun to Earth', `space')}. Similarly, the pair {\em(`rub your hands together very quickly', `friction')}, etc.
-\end{itemize}
-\item {\em Scoring Issues} (31\%) -- Cases where more number of roles match while the combined score is less as compared to the cases where very few roles match but has high combined score.
+
+Textual entailment is noisy and provides inconsistent scores even in some simple cases. For example, the text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
+
+Some textual entailment cases are hard problems which themselves require deeper knowledge and reasoning. For example, one question requires reasoning that `energy traveling from the sun to Earth' is related to `energy transferred through space'. Similarly, another question requires that we know `rub your hands together very quickly' is related to `friction'.
+
+\item {\em Scoring Issues} (31\%) 
+
+In many cases the scoring function we use is unable to distinguish between a strong evidence that comes from one role vs. many weak partial evidences from multiple roles. Favoring cases with many weak partial evidences requires learning a threshold.  We plan to investigate a learning-based approach for combining the partial evidences rather than an ad-hoc scoring function. 
 \end{itemize}

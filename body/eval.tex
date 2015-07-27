@@ -19,24 +19,16 @@ Dom. Adaptation	& 	0.4386	& 	{\bf 0.3351}	& 	{\bf 0.3799}\\
 \label{tab:srl-results}
 \end{table*}%
 
-\subsubsection{Questions}
-
 Our data set contains 141 process identification questions, which were selected manually out of 4650 questions from Help Teaching\footnote{http://www.helpteaching.com}, a collection of tests and worksheets for parents and educators, and 195 questions from the 4th-grade New York Regents Science Exams collection, similar to the one used in (Clark et al., 2013). We selected multiple-choice questions where at least two of the answer choices, including the correct answer, were processes.
 
-\subsubsection{Process Sentences}
+For each question, we identified all processes given as answer choices and collected definition sentences for each. In total, we collected 948 definition sentences covering 183 processes. These sentences were obtained from a variety of sources such as Barron's Study Guides and various web resources including Wikipedia and WordNet.
 
-For each question, we identified all processes given as answer choices and collected definition sentences for each. In total, we collected 948 definition sentences covering 183 processes. These sentences were obtained from a variety of sources such as Barron's Study Guides and various web resources including Wikipedia and WordNet. \todo{Expand on sources for definitions?} 
-
-\subsubsection{Semantic Role Annotations}
-
-Each question and definition sentence was annotated to according to the following set of guidelines to identify the roles expressed by the sentence. A sentence could contain multiple (or no) values for a single role, but text spans are not allowed to overlap - that is, the same word or phrase cannot be used for multiple roles.
-
-After the original annotations were completed, they were checked for quality by a second annotator.
+Each question and definition sentence was annotated to according to the following set of guidelines to identify the roles expressed by the sentence. A sentence could contain multiple (or no) values for a single role, but text spans are not allowed to overlap - that is, the same word or phrase cannot be used for multiple roles. Disagreements were resolved by a second annotator.
 
 \subsection{Semantic Role Labeling}
 
 First, we compare the performance of SRL using MATE under the following configurations:
-\begin{itemize}
+\begin{itemize}[noitemsep,nolistsep]
 \item {\em Standard} -- This configuration uses sentences from all processes combined together for training and does not distinguish at test time whether the sentence is describing a particular process.
 \item {\em Per-Process} -- This uses only the target process sentences for training. This setting requires that we have some seed set of sentences for every process.
 \item {\em Domain Adaptation} -- This uses both target process sentences as well other sentences using the domain adaptation technique described in Section~\ref{sec:domain-adaptation}.
