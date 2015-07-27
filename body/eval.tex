@@ -25,9 +25,9 @@ After the original annotations were completed, they were checked for quality by 
 \hline
 Method			& 	Precision	&	Recall	&	F1\\
 \hline
+Standard			& 	0.4323	& 	0.3325	&	0.3758\\
 Per Process		&	0.4225	& 	0.2556	& 	0.3185\\
 Distant Supervision 	& 	{\bf 0.5614}	& 	0.2642	& 	0.3594 \\
-Combined			& 	0.4323	& 	0.3325	&	0.3758\\
 Dom. Adaptation	& 	0.4386	& 	{\bf 0.3351}	& 	{\bf 0.3799}\\
 \hline
 \end{tabular}
@@ -56,13 +56,7 @@ We find that Domain Adaptation provides minor improvements over the Standard mod
 We hypothesize that this is in part due to the change in distribution of the roles. 
 Many Distant Supervision annotated sentences do not contain all the roles. 
 Thus, the prior probability of observing any particular role decreases potentially causing the learner to be more conservative about predicting roles.  
-
-\subsection{QA}
-
-Our central hypothesis is that using semantic-role based representation helps in process recognition questions. We compare manually generated semantic roles (as a result of the annotation process), and the performance of automatically derived semantic roles for question answering. We use the process described in Section~\ref{sec:qa} for answering questions. Table~\ref{tab:qa-results} shows the accuracy of the various systems. 
-
-
-\begin{table*}[htdp]
+\begin{table}[htdp]
 \begin{center}
 \begin{tabular}{|l|c|}
 \hline
@@ -81,6 +75,15 @@ BOW + Standard  & 65.24\\
 \hline
 \end{tabular}
 \end{center}
-\end{table*}
+\end{table}
 
-\subsection{Discussion}
+\subsection{QA}
+
+Our central hypothesis is that using semantic-role based representation helps in process recognition questions. We compare manually generated semantic roles (as a result of the annotation process), and the performance of automatically derived semantic roles for question answering. We use the process described in Section~\ref{sec:qa} for answering questions. 
+
+Table~\ref{tab:qa-results} shows the accuracy of the various systems. We use a simple bag-of-words system that uses textual entailment but without the semantic roles  as a baseline (BOW). Manual SRL, is a system which uses manually assigned semantic roles as its representation. We find that using manual roles by itself for alignment yields a 9\% relative improvement in accuracy. BOW and SRL perform well in slightly different subsets of questions. As a result combining SRL-based scoring with BOW based scoring yields more than 12\% improvement. While access to semantic roles provides gains, a variety of other issues also need to be addressed to further improve QA performance (Section~\ref{sec:error-analysis}).
+
+Automatically obtained semantic roles using the Standard formulation is worse than BOW by itself. However, in conjunction with BOW provides minor gains over using BOW alone. The QA performance of the other automatic SRL variants track the SRL extraction accuracy. This suggests that improving the automatic SRL performance is likely to provide improvements in QA. 
+
+
+\input{body/error-analysis}
