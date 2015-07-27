@@ -19,9 +19,10 @@ In some cases, the question only specifies one role such as the result e.g., {\e
 
 In other cases, certain critical information are not covered in our semantic representation. Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
 \item {\em Entailment Issues} (32\%)
-Inconsistent entailment scores. Example: The text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
 
-Hard entailment problems. Example: The text-hypothesis pair {\em(`travels from the sun to Earth', `space')}. Similarly, the pair {\em(`rub your hands together very quickly', `friction')}, etc.
+Textual entailment is noisy and provides inconsistent scores even in some simple cases. For example, the text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
+
+Some textual entailment cases are hard problems which themselves require deeper knowledge and reasoning. For example, one question requires reasoning that `energy traveling from the sun to Earth' is related to `energy transferred through space'. Similarly, another question requires that we know `rub your hands together very quickly' is related to `friction'.
 
 \item {\em Scoring Issues} (31\%) 
 
