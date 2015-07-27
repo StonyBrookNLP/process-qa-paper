@@ -1,2 +1,17 @@
 % !TEX root =  ../main.tex
+
 \subsection{Distant Supervision}
+Distant supervision (Mintz et al , 2009),  is an increasingly popular method for relation extraction and typically used in a setting where we have a lot  of unlabeled data and there exist the source of  labeled knowledge base.
+They key assumption of distant supervision is " if two entities participate in a relation, any sentence that contain those two entities might express that relation" (Mintz et al, 2009).  In the context of SRL, the approach from (Furstenau and Lapata, 2012) uses semi supervised technique to find new instances of training data which are similar to the labeled training data by computing structural similarity between the sentences. The formalized the structural similarity  as graph alignment problem.
+
+As in our setting we have very small amount of labeled data and annotation is an expensive effort we try to apply distant supervision to obtain more labeled data. The unlabeled data that we use is the Waterloo corpus. We construct Wumpus query pattern to retrieve the sentences. In particular, we use the following steps:
+\begin{itemize}[noitemsep,nolistsep]
+\item Collect most frequent role fillers for each processes. 
+\item Create the following query pattern that consist of the role fillers.
+\item For all the documents retrieved from Wumpus, get the sentence from each document.  For each filtered sentences do the following:
+\begin{itemize}[noitemsep,nolistsep]
+	\item Matching between token in the sentence and the most frequent role fillers that we have. 
+	\item Use the heuristic : only label the candidate role filler if there is a   up-path $\uparrow$ (dependency path) from the candidate role filler nodes to the trigger node. If there is no such path then skip the sentence.
+\end{itemize}
+\item In addition to the previous steps, we also use some simple hand crafted  lexical patterns  to identify \textit{Undergoer, Enabler and Result}.   For example, \textit{Enablers} are often characterized with the preceding words such as \textit{by, through,with, because}. \textit{Results} usually appear after the word \textit{causes, into, produce}. 
+\end{itemize}
