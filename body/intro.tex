@@ -1,9 +1,80 @@
+% !TEX root =  ../main.tex
 \section{Introduction}
 
-Recent research has shown that a structured approach to knowledge representation, such as through the use of semantic frames, is beneficial to the task of question answering. Resources such as FrameNet and PropBank are invaluable when answering general knowledge type questions, but their lack of coverage makes them insufficient when designing a system to answer domain-specific questions. Unfortunately, domain-specific datasets suitable for this type of problem are basically nonexistent, and manually creating a new dataset of sufficient size is time-consuming and impractical. Semantic role labelling can help to automate this process, but existing SRL systems fail when presented with domain-specific jargon.
+Grade-level science exams are an excellent benchmark for developing knowledge-driven question answering systems (Clarke et al., 2013). 
+These exams test students' understanding of a wide variety of concepts including physical, biological, and other natural processes. 
+Some questions test the ability to recognize a process given a description of its instance.  
+Here is an example: {\em A puddle is drying in the sun. 
+This is an example of A) evaporation, B) condensation, C) melting, D) sublimation}. 
+This work explores a knowledge-driven approach to answering such questions. 
 
-In this paper, we present a method for using distant supervision to build a large knowledge base of science concepts represented using semantic frames. Starting with relatively few definition sentences as seeds, we are able to collect many more sentences with which to train a semantic role labeller to perform frame extraction. Finally, we use frame alignment to answer elementary level multiple choice questions in the science domain.
+In particular, we investigate a light-weight semantic role based representation to 
+answer 4th grade science questions that test process recognition.
+Many processes are similar to each other and not surprisingly are often described using similar words. 
+For instance, both {\em evaporation} and {\em condensation} are both phase changes involving liquids and gases. 
+Distinguishing between these two requires an understanding of the different roles that liquids and gases play in these processes. 
+This type of knowledge is naturally expressed via semantic roles.
 
-We show that by starting with an initial dataset containing NUM sentences, we are able to use distant supervision to expand our dataset to include NUM sentences covering NUM different science processes. A model trained on these sentences to perform semantic role labelling is able to achieve an F1 of NUM. Using the semantic frames obtained from this model, we are able to answer NUM multiple choice science questions with NUM accuracy.
+We design a light-weight representation that applies to many processes.
+In general a process has an input -- the artifact that undergoes the process, 
+an output -- the artifact that results from the process, 
+and an enabler -- an artifact or event that helps the process. 
+In addition we also include key actions that denote the main events in the process. 
+For example, in evaporation the typical input is a liquid and the output is a gaseous form of the input substance.
+The enabler is some form of heat source such as the sun.
+\footnote{This limited representation is incomplete and semantically inaccurate in some cases. 
+For instance, we ignore sub-events and any sequence or order information between them. 
+We chose this representation as it covers a majority of the questions at the 4th grade level and is also more amenable to 
+automatic extraction.} 
 
-Our work provides a valuable contribution to topics within both semantic role labelling and question answering by providing a viable solution to the problem of obtaining an annotated dataset in order to answer questions within a specialized domain. We show that distant supervision can be used to obtain a large number of high-quality definition sentences to provide additional information to the initial knowledge base. We further show that WHAT DO WE SHOW. Finally, we show that semantic frames are an effective way to represent knowledge for question answering systems.
+Given this semantic role based representation, recognizing a process instance (i.e., answering a question) becomes a task of assessing how well the roles of the instance in the question align with the typical roles of the candidate answer processes. 
+
+Our preliminary experiments show that manually generated semantic representations can provide more than 13\% increase in QA performance over a simple bag-of-words representation.
+A scalable solution however requires automatic extraction. 
+We investigated an off-the-shelf semantic role labeling system, MATE (Björkelund et al., 2009), to extract these representations and 
+evaluated their performance in QA.
+
+SRL systems such as MATE are supervised systems that require large amounts of training data. 
+Unfortunately, existing resources such as FrameNet do not cover all our target scientific processes. 
+We manually created a small amount of training data using sentences that involve processes mentioned in the questions. 
+To account for the limited amount of training data, we explored distant supervision, and domain adaptation.
+We find that domain adaptation yields a modest improvement, while distant supervision is unreliable. 
+Overall, we find that automatic extraction is still quite noisy and as a result doesn't provide improvements over
+using simple bag-of-words representations. 
+
+An error analysis shows the knowledge gaps and the deficiencies in the current representation and the key linguistic
+phenomenon that lead to errors in automatic SRL, which present interesting avenues for future work. 
+
+
+
+%We operationalize this idea in two ways:
+%\begin{enumerate}
+%\item Align Roles -- Extract semantic roles from the question and score how well the roles align with the roles for each process.
+%\item Role Extraction Confidence -- Build an extraction model for each process. Assess how well the model can assign roles to the question sentence. 
+%\end{enumerate}
+
+%Both approaches rely on effective semantic role labeling. 
+%We extend the standard SRL approach in two ways. 
+%\begin{itemize}
+%\item SRL systems target predicate argument structures specified over verbs or their nominalization that cover general purpose actions (e.g., buy, sell, jump).
+%Such systems are typically trained on resources such as FrameNet and VerbNet which cover these general purpose actions. 
+%However, these resources do not cover our target scientific processes and are ineffective when applied directly.
+
+%An effective role labeler for processes requires substantial amount of training data. 
+%To this end we investigate distant supervision for gathering additional training data. 
+%Prior work has shown promise for this approach. 
+%We propose a simpler method that is equally effective.
+
+%\item Unlike traditional SRL settings, in producing process semantic roles, we have access to the process that we are interpreting the sentence for. 
+%We exploit this information to group processes that share similar syntactic realizations of roles. 
+%This...
+
+%\end{itemize}
+
+
+
+
+
+
+
+

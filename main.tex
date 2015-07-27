@@ -10,20 +10,10 @@
 % to show all the authors. Please do not make the titlebox
 % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
+\newcommand{\eat}[1]{}
 
+\title{Semantic Role Labeling for Process Recognition Questions}
 
-\title{Placeholder Title}
-
-\author{First Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  {\tt email@domain} \\\And
-  Second Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  {\tt email@domain} \\}
 
 \date{}
 
@@ -32,90 +22,8 @@
 
 \input{body/abstract}
 \input{body/intro}
-
-\section{Process Recognition Using SRL}
-	\subsection{Problem Definition}
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-	\subsection{Approach}
-	Describe high level idea in two sentences.\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-	\subsubsection{Alignment-based Approach}
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\	
-	\subsubsection{QA as SRL}
-		...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-\newpage
-
-\section{Process Frame Extraction using SRL}
-	\subsection{Process Frames}
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-	\subsection{Supervised Formulations}
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-	
-	\subsection{Distant Supervision Formulations}
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\
-	...\\	
-	...\\
-	...\\
-	
-\newpage
-\section{Results and Evaluation}
-	\subsection{SRL}
-		\subsubsection{Combined vs Per-Process}
-		\subsubsection{Distant Supervision vs Without}
-		\subsubsection{Benefits of Selectional Preference?}
-		\subsubsection{Challenges/Error Analysis}
-	\subsection{QA}
-		\subsubsection{Comparison of Alignment Methods}
-		\subsubsection{Improvements to Entailment}
-		\subsubsection{SRL vs Baseline Models for QA}
-		\subsubsection{Challenges/Error Analysis}
-
-\section{Conclusion/Future Work}
-
+\input{body/srl}
+\input{body/qa}
+\input{body/eval}
+\input{body/conclusion}
 \end{document}
