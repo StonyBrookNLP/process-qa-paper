@@ -18,7 +18,7 @@ In particular, use the following procedure to answer questions:\\
 &alignment(A, S) = \\
 & \sum_{role_i \in R} entails(role_i(A), role_i(S))
 \end{align*}
-where, $R =$\{Input, Result, Enabler, Trigger\}. $entails(x, y)$ is computed as a textual entailment score that reflects how well the text $x$ entails text $y$. It is simply a fraction of word or phrase level coverage of the statement role after accounting for synonyms and hypernyms using WordNet. 
+where, $R =$\{Input, Result, Enabler, Trigger\}. $entails(x, y)$ is computed as a textual entailment score that reflects how well the text $x$ entails text $y$ or the other way around. It is simply a fraction of word or phrase level coverage of the statement role after accounting for synonyms and hypernyms using WordNet. 
 \item Compute the mean of the top 5 alignment scores and use it as the final score for each process. 
 \item Return the top scoring process as the answer.
 \end{enumerate}
