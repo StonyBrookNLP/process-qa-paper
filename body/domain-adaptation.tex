@@ -1,2 +1,22 @@
 % !TEX root =  ../main.tex
+Structured prediction problems such as SRL require substantial amounts of training data. 
+SRL systems such as MATE typically train on resources such as FrameNet, which contain several \todo{thousand} sentences. 
+Semantic roles are not reliably identified with syntactic patterns alone. 
+A pattern such as {\em [verb] to [X]} could suggest that X is a result or enabler depending on the process at hand. 
+For instance, {\em change to [X]} indicates a resulting state, whereas {\em adapts to [X]} doesn't. 
+This suggests that lexical information (e.g., the type of verb) is quite critical. 
+Unless the lexical variations had all been observed in the training data, generalization is likely to suffer. 
+We explore two ideas to address this issue.
+
 \subsection{Domain Adaptation}
+
+A straightforward approach to training the SRL system is to combine all process sentences into one pool and learn a single model. 
+Because we know the process that each sentence is describing, we can learn a SRL model for every process using only the sentences that describe the process. 
+This enables learning from a much smaller but highly relevant set of sentences. 
+We can combine these approaches using domain adaptation ideas~\cite{}, which allows to combine models from a smaller target domain and larger source domains. 
+
+\todo{Describe Hal Daume's approach}
+
+
+
+
