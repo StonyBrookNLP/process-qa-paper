@@ -1,2 +1,18 @@
 % !TEX root =  ../main.tex
 \subsection{Error Analysis}
+
+We can categorize the questions that the QA system fails to answer as follows:
+\begin{itemize}
+\item {\em Knowledge Representation Issues} (37\%)
+\begin{itemize}
+\item {\em Sequential Knowledge} -- Questions that test the ability to recognize the event order in a process. Example:  {\em What is the third step of the water cycle?}
+\item {\em Underspecified} -- Questions containing minimal role information. Example:  {\em What process ends with a new and improved plant?}
+\item {\em Role Coverage} -- Questions where certain critical information are not covered in our semantic representation. Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
+\end{itemize}
+\item {\em Entailment Issues} (32\%)
+\begin{itemize}
+\item Inconsistent entailment scores. Example: The text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
+\item Hard entailment problems. Example: The text-hypothesis pair {\em(`travels from the sun to Earth', `space')}. Similarly, the pair {\em(`rub your hands together very quickly', `friction')}, etc.
+\end{itemize}
+\item {\em Scoring Issues} (31\%) -- Cases where more number of roles match while the combined score is less as compared to the cases where very few roles match but has high combined score.
+\end{itemize}
