@@ -4,6 +4,47 @@
 A portion of the grade science exams test the ability to recognize the instances of physical, biological, and other natural processes. 
 The questions present a short description of an instance and multiple process names as the answer choices. 
 
+Table below shows a few examples:
+\\
+\fbox{
+
+\begin{minipage}{17em}
+
+1) As water vapor rises in the atmosphere, it cools and changes back to liquid.
+Tiny drops of liquid form clouds in this process called (A) condensation (B) evaporation (C) precipitation (D) run-off.\\
+
+2) The process of change from an egg to an adult butterfly is an example of: (A) vibrations (B) metamorphosis.\\
+
+3) A new aluminum can made from used cans is an example of: (A) recycling (B) reducing (C) reusing (D) repairing	
+
+\end{minipage}
+}
+\\
+\\
+The descriptions of the instances are often short. 
+They mention the main entities involved and the change brought about by the process. 
+At the 4th grade level, the questions do not involve deep knowledge about the sub-events or their sequential order.
+Rather the questions test for shallower knowledge about the entities undergoing change, the resulting artifacts, and the main characteristic action describing the process. 
+This knowledge is naturally expressed via semantic roles. 
+Accordingly we design a simple representation that encodes information about each process via the following roles:
+\begin{enumerate}
+\item {\em Input} -- This role captures the main input to the process or the object undergoing the process. e.g., Water is an input to the evaporation process. 
+\item {\em Result} -- The artifact that results from the process or the change that results from the process e.g., Water vapor is a result of evaporation. 
+\item {\em Trigger} -- The main action, expressed as a verb or its nominalization, indicating the occurrence of the process. e.g., {\em converted} is a trigger for evaporation.
+\item {\em Enabler} -- The artifact, condition or action that enables the process to happen. e.g., {\em Sun} is a heat source that is enabler for evaporation.
+\end{enumerate}
+
+Our goal is to build aggregate knowledge about processes from multiple sentences. 
+If effect we wish to create a table, whose columns are the semantic roles and rows are role fillers obtained from sentences mentioning the process.
+We gather knowledge about processes from both definitional sentences and from sentences that describe instances of the processes. 
+
+Definitional sentences present {\em type} information about the roles. 
+For instance, the input to evaporation is typically a liquid. 
+During question answering, we have to check type compatibility of the roles in the question and the definitional sentence. 
+Having instance level information in the process knowledge can help situations where type resolution fails. 
+On the other hand, having definitional sentences provides better coverage of information about roles compared to instance sentences,
+which can sometimes omit roles that are obvious. 
+
 
 \input{body/mate}
 \input{body/domain-adaptation}

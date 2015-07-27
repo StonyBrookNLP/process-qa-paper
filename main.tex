@@ -1,5 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{acl2015}
+\usepackage{color}
+\usepackage{multicol} 
 %\usepackage{times}
 %\usepackage{latexsym}
 
@@ -11,7 +13,7 @@
 % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 \newcommand{\eat}[1]{}
-
+\newcommand{\todo}[1]{\textcolor{blue}{[TODO: #1]} }
 \title{Semantic Role Labeling for Process Recognition Questions}
 
 
@@ -25,5 +27,6 @@
 \input{body/srl}
 \input{body/qa}
 \input{body/eval}
+\input{body/related}
 \input{body/conclusion}
 \end{document}
