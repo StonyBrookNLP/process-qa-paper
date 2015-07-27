@@ -1,5 +1,6 @@
 % !TEX root =  ../main.tex
 \subsection{MATE System for SRL}
+
 There have been various  SRL approaches , in terms of resources used (PropBank, FrameNet) and also the techniques and features used. Nevertheless, in general the workflow of an SRL consist of two parts namely argument identification and argument classification.  In this work, we use MATE  SRL system (Bjšrkelund et al., 2009). The reason we use MATE in our setting is because the code is publicly available, it provides automatic predicate/trigger identification, and it is one of the high performing system in  ConLL'09 SRL shared task for English dataset. 
 
 MATE accepts sentences in CoNLL'09 format and processes them through several pipelines namely predicate identification, argument identification, and argument classification. The features used in the pipeline are based on the syntactic information obtained from POS tagger and dependency parser such as the position of the argument with respect to the predicate, the dependency path between the arguments and the predicate, the set of POS tag of the predicate's children etc. Please refer to (Bjšrkelund et al., 2009)f or details.  
