@@ -16,7 +16,6 @@ This enables learning from a much smaller but highly relevant set of sentences.
 Note this is possible in our setting because we know beforehand which process each sentence is describing.
 Rather than picking one approach over the other, we can combine their strengths using domain adaptation ideas~\cite{}.
 
-
 The sentences that describe the target process can be viewed as target domain data, and the sentences describing all other processes can be viewed as the source domain data. Following~\cite{daume} we utilize a simple approach for domain adaptation. The key idea is to take the existing features and create a new feature vector that contains three versions of the original features. A source-specific version, a target-specific version, and a general version. The instances from the source domain will only contain the general and source-specific versions, and the instances for the target domain will contain the general and the target-specific versions. Formally, if $\mathbf{f}$ is the set of features used, then we use the following mappings to create new feature vectors:\\
 \begin{align*}
 \Phi^{s}(f) &= <f, f, 0>\\
