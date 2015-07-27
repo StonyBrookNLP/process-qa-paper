@@ -2,22 +2,6 @@
 \section{Evaluation}
 
 \subsection{Process Recognition Collection}
-
-\subsubsection{Questions}
-
-Our data set contains 141 process identification questions, which were selected manually out of 4650 questions from Help Teaching\footnote{http://www.helpteaching.com}, a collection of tests and worksheets for parents and educators, and 195 questions from the 4th-grade New York Regents Science Exams collection, similar to the one used in (Clark et al., 2013). We selected multiple-choice questions where at least two of the answer choices, including the correct answer, were processes.
-
-\subsubsection{Process Sentences}
-
-For each question, we identified all processes given as answer choices and collected definition sentences for each. In total, we collected 948 definition sentences covering 183 processes. These sentences were obtained from a variety of sources such as Barron's Study Guides and various web resources including Wikipedia and WordNet. \todo{Expand on sources for definitions?} 
-
-\subsubsection{Semantic Role Annotations}
-
-Each question and definition sentence was annotated to according to the following set of guidelines to identify the roles expressed by the sentence. A sentence could contain multiple (or no) values for a single role, but text spans are not allowed to overlap - that is, the same word or phrase cannot be used for multiple roles.
-
-After the original annotations were completed, they were checked for quality by a second annotator.
-
-\subsection{Semantic Role Labeling}
 \begin{table*}[htdp]
 \begin{center}
 \begin{tabular}{|l|c|c|c|}
@@ -34,6 +18,22 @@ Dom. Adaptation	& 	0.4386	& 	{\bf 0.3351}	& 	{\bf 0.3799}\\
 \caption{Semantic Role Labeling Performance. Bold face entries indicate the best performance.}
 \label{tab:srl-results}
 \end{table*}%
+
+\subsubsection{Questions}
+
+Our data set contains 141 process identification questions, which were selected manually out of 4650 questions from Help Teaching\footnote{http://www.helpteaching.com}, a collection of tests and worksheets for parents and educators, and 195 questions from the 4th-grade New York Regents Science Exams collection, similar to the one used in (Clark et al., 2013). We selected multiple-choice questions where at least two of the answer choices, including the correct answer, were processes.
+
+\subsubsection{Process Sentences}
+
+For each question, we identified all processes given as answer choices and collected definition sentences for each. In total, we collected 948 definition sentences covering 183 processes. These sentences were obtained from a variety of sources such as Barron's Study Guides and various web resources including Wikipedia and WordNet. \todo{Expand on sources for definitions?} 
+
+\subsubsection{Semantic Role Annotations}
+
+Each question and definition sentence was annotated to according to the following set of guidelines to identify the roles expressed by the sentence. A sentence could contain multiple (or no) values for a single role, but text spans are not allowed to overlap - that is, the same word or phrase cannot be used for multiple roles.
+
+After the original annotations were completed, they were checked for quality by a second annotator.
+
+\subsection{Semantic Role Labeling}
 
 First, we compare the performance of SRL using MATE under the following configurations:
 \begin{itemize}

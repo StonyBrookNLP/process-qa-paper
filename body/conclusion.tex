@@ -1,2 +1,11 @@
 % !TEX root =  ../main.tex
 \section{Conclusions}
+In this work we focused on a semantic role based representation of knowledge about processes expressed in multiple sentences.
+
+Other semi-supervised and un-supervised approaches have been explored for addressing the data sparsity issue in semantic role labeling~\cite{furstenau-emnlp2009,lang-emnlp2011,lang-naacl2010}. We explored a simpler domain adaptation based idea and a distant supervision approach that is much simpler than the ILP based alignment ideas proposed earlier~\cite{furstenau-emnlp2009}. While the domain adaptation idea yields minor improvements, we were unable to benefit from the simpler distant supervision approach.
+
+Overall, we find that the semantic role-based representation we've generated is beneficial for recognizing processes.
+Automatic recognition of roles is quite noisy and as a result doesn't yield substantial benefits over simpler bag-of-words representations. 
+Our error analysis shows that many questions require substantial reasoning steps beyond simple textual entailment. 
+We believe that the semantic role based representations are more suited for building reasoning-based QA systems that can go beyond
+mere alignment based approaches.
