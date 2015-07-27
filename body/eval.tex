@@ -45,7 +45,8 @@ However, it trains only on the sentences that describe the target process and do
 This requires that we have some seed knowledge for each process but not necessarily sentence-level annotations.
 \end{itemize}
 
-Table~\ref{tab:srl-results} shows the results of the different configurations. 
+We use 5-fold cross validation to test each configuration.
+Table~\ref{tab:srl-results} shows the results. 
 The results show that MATE is not highly effective with the best F1 of around 0.38. 
 This is substantially lower compared to the state-of-the-art performance of MATE on standard datasets such as CoNLL, where the performance around 0.80 in F1. 
 We believe that the limited amount of training data is a key factor in the performance differences.
