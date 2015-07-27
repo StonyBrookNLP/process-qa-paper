@@ -19,10 +19,68 @@ After the original annotations were completed, they were checked for quality by 
 
 
 \subsection{Semantic Role Labeling}
+\begin{table*}[htdp]
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Method			& 	Precision	&	Recall	&	F1\\
+\hline
+Per Process		&	0.4225	& 	0.2556	& 	0.3185\\
+Distant Supervision 	& 	{\bf 0.5614}	& 	0.2642	& 	0.3594 \\
+Combined			& 	0.4323	& 	0.3325	&	0.3758\\
+Dom. Adaptation	& 	0.4386	& 	{\bf 0.3351}	& 	{\bf 0.3799}\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Semantic Role Labeling Performance. Bold face entries indicate the best performance.}
+\label{tab:srl-results}
+\end{table*}%
 
+First, we compare the performance of SRL using MATE under the following configurations:
+\begin{itemize}
+\item {\em Standard} -- This configuration uses sentences from all processes combined together for training and does not distinguish at test time whether the sentence is describing a particular process.
+\item {\em Per-Process} -- This uses only the target process sentences for training. This setting requires that we have some seed set of sentences for every process.
+\item {\em Domain Adaptation} -- This uses both target process sentences as well other sentences using the domain adaptation technique described in Section~\ref{sec:domain-adaptation}.
+\item {\em Distant Supervision} -- This setting uses the sentences obtained via distant supervision for training. 
+However, it trains only on the sentences that describe the target process and does not use sentences describing the other processes. 
+This requires that we have some seed knowledge for each process but not necessarily sentence-level annotations.
+\end{itemize}
 
+Table~\ref{tab:srl-results} shows the results of the different configurations. 
+The results show that MATE is not highly effective with the best F1 of around 0.38. 
+This is substantially lower compared to the state-of-the-art performance of MATE on standard datasets such as CoNLL, where the performance around 0.80 in F1. 
+We believe that the limited amount of training data is a key factor in the performance differences.
+Training on target domain sentences using the Per-Process model results in lower performance, whereas Standard, Distant Supervision, and Domain Adaptation, all with increased amounts of data result in better performance. 
+
+We find that Domain Adaptation provides minor improvements over the Standard model. Interestingly, Distant Supervision doesn't improve F1 but achieves the best overall precision. 
+We hypothesize that this is in part due to the change in distribution of the roles. 
+Many Distant Supervision annotated sentences do not contain all the roles. 
+Thus, the prior probability of observing any particular role decreases potentially causing the learner to be more conservative about predicting roles.  
 
 \subsection{QA}
 
+Our central hypothesis is that using semantic-role based representation helps in process recognition questions. We compare manually generated semantic roles (as a result of the annotation process), and the performance of automatically derived semantic roles for question answering. We use the process described in Section~\ref{sec:qa} for answering questions. Table~\ref{tab:qa-results} shows the accuracy of the various systems. 
+
+
+\begin{table*}[htdp]
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+Method & Accuracy\\
+\hline
+BOW & 63.12\\
+Manual SRL & 67.38\\
+BOW+Manual SRL & 70.92\\
+\hline
+Standard	& 55.32\\
+Per Process & 46.80 \\
+Domain Adaptation & 55.32\\
+Distant Supervision & 51.77\\
+\hline
+BOW + Standard  & 65.24\\
+\hline
+\end{tabular}
+\end{center}
+\end{table*}
 
 \subsection{Discussion}
