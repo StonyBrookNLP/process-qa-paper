@@ -8,21 +8,22 @@ Intuitively, we can score each process based on how well the roles of the instan
 Higher alignment suggests better evidence. 
 In particular, use the following procedure to answer questions:\\
 \begin{enumerate}[noitemsep,nolistsep]
-\item Convert the multiple-choice question into $k$ statements (${A_1, ..., A_k}$), one for each answer option. 
-\item Identify the semantic roles in each question statement by processing them through MATE. 
+\item Convert the question into $k$ statements (${A_1, ..., A_k}$), one for each answer option. 
+\item Identify the roles in each question statement by processing them through MATE. 
 \item For each statement $A_i$, collect the corresponding process rows from the process knowledge table ($S_1, ..., S_l$). 
 \item For each row in the table compute an alignment score by checking for the textual entailment of the corresponding roles. 
 \begin{align*}
+\vspace{-2em}
 &alignment(A, S) = \\
 & \sum_{role_i \in R} entails(role_i(A), role_i(S))
+\vspace{-2em}
 \end{align*}
-where, $R =$\{Input, Result, Enabler, Trigger\}. $entails(x, y)$ is computed as a textual entailment score that reflects how well the text $x$ entails text $y$ or the other way around. It is simply a fraction of word or phrase level coverage of the statement role after accounting for synonyms and hypernyms using WordNet. 
+where, $R =$\{Input, Result, Enabler, Trigger\}. $entails(x, y)$ is computed as a textual entailment score that reflects how well the text $x$ entails text $y$ or the other way around. It measures the coverage of the statement role accounting for synonyms and hypernyms using WordNet. 
 \item Compute the mean of the top 5 alignment scores and use it as the final score for each process. 
 \item Return the top scoring process as the answer.
 \end{enumerate}
-
-Note that this scoring procedure doesn't distinguish between definition and instance sentences. 
-The textual entailment component is relied upon to provide the type resolution (e.g., water is a type of liquid).
+%Note that this scoring procedure doesn't distinguish between definition and instance sentences. 
+%The textual entailment component is relied upon to provide the type resolution (e.g., water is a type of liquid).
 
 
 
