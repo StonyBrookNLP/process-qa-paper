@@ -1,13 +1,16 @@
 % !TEX root =  ../main.tex
 \begin{abstract}
 
-We consider a 4th grade level question answering task involving identification of physical, biological and other natural processes. 
-Many of these processes involve similar entities and are hard to distinguish using simple bag-of-words representations alone.
-Simple semantic roles such as {\em Input}, {\em Result}, and {\em Enabler} often capture the most critical bits of information about processes.
-We present empirical evaluation of the role-based representations on a set of 4th grade science questions.
-We build a QA system that scores answers by aligning the semantic roles in the question against the roles in the knowledge.
-Evaluation shows that manual identification of these roles provides substantial improvements over simpler bag-of-words (BOW) representation.
-However, automatic role identification is noisy and only provides limited gains. 
-Our analysis shows that many questions require deeper reasoning beyond simple role based alignment and points to interesting avenues for future work.
- 
+We consider a 4th grade level question answering task.
+We focus on a subset involving recognizing instances of physical, biological, and other natural processes. 
+Many processes involve similar entities and are hard to distinguish using simple bag-of-words representations alone.
+
+Simple semantic roles such as {\em Input}, {\em Result}, and {\em Enabler} can often capture the most critical bits of information about processes.
+Our QA system scores answers by aligning semantic roles in the question against the roles in the knowledge.
+Empirical evaluation shows that manually generated roles provide a 12\% relative improvement in accuracy over a simpler bag-of-words representation.
+However, automatic role identification is noisy and doesn't provide gains even with distant supervision and domain adaptation modifications to account for the limited training data.
+In addition, we conducted an error analysis of the QA system when using the manual roles. 
+We find representational gaps i.e., cases where critical information doesn't fit into any of the current roles, 
+as well as entailment issues that motivate deeper reasoning beyond simple role based alignment for future work.
+
 \end{abstract}

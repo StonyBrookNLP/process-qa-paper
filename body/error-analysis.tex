@@ -3,21 +3,32 @@
 \label{sec:error-analysis}
 {\bf Automatic SRL Failures}
 
-A qualitative analysis of the SRL errors showed two main issues that arise out of data sparsity. Much of the errors arise from failures to identify the proper predicate. It turns out that the dominant pattern is where the predicate is a verb that is directly attached to the ROOT. Other syntactic patterns are infrequently observed and are not very reliable. Automatic SRL fails in these cases. Similarly the dependency labels of the children of a node are also strong features for predicate prediction but this feature again fails except in cases of the most dominant dependencies. 
+A qualitative analysis of the SRL errors showed two main issues that arise out of data sparsity. 
+Much of the errors arise from failures to identify the proper predicate. 
+It turns out that the dominant pattern is where the predicate is a verb that is directly attached to the ROOT. 
+Other syntactic patterns are infrequently observed and are not very reliable. 
+Automatic SRL fails in these cases. 
+Similarly the dependency labels of the children of a node are also strong features for predicate prediction 
+but this feature again fails except in cases of the most dominant dependencies. 
 
-A closer investigation suggests much of the variation in these patterns arise because of functional phrases such as ``is a process by which''. Simplifying the sentences by eliminating these constructions can lead to improved performance.
+A closer investigation suggests much of the variation in these patterns arise because of functional phrases such as ``is a process by which''. 
+Simplifying the sentences by eliminating these constructions can lead to improved performance.
 
 {\bf QA Failures}
 
-Even with manually assigned roles, the QA system failed on nearly 30\% of the questions. The following are the main error categories.
+Even with manually assigned roles, the QA system failed on nearly 30\% of the questions. 
+The following are the main error categories.
 \begin{itemize}[noitemsep,nolistsep]
 \item {\em Knowledge Representation Issues} (37\%)
 Some questions require the ability to recognize the order in which sub-events happen in a process e.g., {\em What is the third step of the water cycle?}.
 In some cases, the question only specifies one role such as the result e.g., {\em What process ends with a new and improved plant?}. Success in these cases depends on ability to do effective textual entailment. 
-In other cases, certain critical information are not covered in our semantic representation. Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
+In other cases, certain critical information are not covered in our semantic representation. 
+Example: {\em \underline{\hspace{1cm}} is the spinning of a planet on its axis.} `on its axis' is the critical information that differentiates {\em rotation} and {\em revolution} but unfortunately this is not covered in our semantic roles.
 \item {\em Entailment Issues} (32\%)
 Textual entailment is noisy and provides inconsistent scores even in some simple cases. For example, the text-hypothesis pair {\em(`all plant and animal species', `all living things')} has an entailment score of $0.2856$ while the pair {\em(`all plant and animal species', `plants')} has a score of $1$.
 Some textual entailment cases are hard problems which themselves require deeper knowledge and reasoning. For example, one question requires reasoning that `energy traveling from the sun to Earth' is related to `energy transferred through space'. Similarly, another question requires that we know `rub your hands together very quickly' is related to `friction'.
 \item {\em Scoring Issues} (31\%) 
-In many cases the scoring function we use is unable to distinguish between a strong evidence that comes from one role vs. many weak partial evidences from multiple roles. Favoring cases with many weak partial evidences requires learning a threshold.  We plan to investigate a learning-based approach for combining the partial evidences rather than an ad-hoc scoring function. 
+In many cases the scoring function we use is unable to distinguish between a strong evidence that comes from one role vs. many weak partial evidences from multiple roles. 
+Favoring cases with many weak partial evidences requires learning a threshold.  
+We plan to investigate a learning-based approach for combining the partial evidences rather than an ad-hoc scoring function. 
 \end{itemize}

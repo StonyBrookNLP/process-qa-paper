@@ -1,7 +1,23 @@
 % !TEX root =  ../main.tex
 \section{Conclusions}
-In this work we focused on a semantic role based representation of knowledge about processes expressed in multiple sentences.
+In this work we focused on a semantic role based representation of knowledge about processes.
 
-Other semi-supervised and un-supervised approaches have been explored for addressing the data sparsity issue in semantic role labeling~\cite{furstenau-emnlp2009,lang-emnlp2011,lang-naacl2010}. We explored a simpler domain adaptation based idea and a distant supervision approach that is much simpler than the ILP based alignment ideas proposed earlier~\cite{furstenau-emnlp2009}. While the domain adaptation idea yields minor improvements, we were unable to benefit from the simpler distant supervision approach.
+We find a small set of semantic roles can be used to build an effective representation for process recognition questions.
+Unfortunately, automatic SRL systems require significant amounts of training data. 
+Out-of-the-box application of a standard SRL system trained on our limited labeled data turns out to be 
+quite noisy and doesn't yield benefits for QA.
+Prior work explored semi-supervised and un-supervised approaches for addressing the data sparsity issues~\cite{furstenau-emnlp2009,lang-emnlp2011,lang-naacl2010}. 
+%We explored a domain adaptation technique and a distant supervision approach that is much simpler than previous ILP based alignment~\cite{furstenau-emnlp2009}. 
+We explored a domain adaptation technique and a simple distant supervision approach.
+While domain adaptation yielded minor gains, we were unable to benefit from the simpler distant supervision approach.
+This is in part due to differences in the percentage of roles in the distant supervision and the target sentences.
 
-Overall, we find that the semantic role-based representation we've generated is beneficial for recognizing processes.Automatic recognition of roles is quite noisy and as a result doesn't yield substantial benefits over simpler bag-of-words representations. Our error analysis shows that many questions require substantial reasoning steps beyond simple textual entailment. We believe that the semantic role based representations are more suited for building reasoning-based QA systems that can go beyond mere alignment based approaches.
+%Overall, we find that the semantic role-based representation we've generated is beneficial for recognizing processes.
+%Automatic recognition of roles is quite noisy and as a result doesn't yield substantial benefits over simpler bag-of-words representations. 
+Error analysis on the manual role-based QA shows representational gaps.
+Also, many questions require deeper reasoning that go beyond simple textual entailment.
+Our findings suggest the following avenues for future work: 
+1) Address representational gaps by a mix of pre-specified general roles and automatically discovered process specific roles, 
+2) Introduce additional structure within the roles to facilitate deeper reasoning,
+3) Rather than relying on automatic interpretation of a handful of sentences, 
+compose knowledge by explicitly searching for sentences that express roles in expected ways.
